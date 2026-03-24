@@ -1,0 +1,28 @@
+server:
+  mode: api
+  apiKey: ${LETTA_API_KEY}
+
+agents:
+  - name: Ezra
+    id: ${EZRA_AGENT_ID}
+
+    features:
+      allowedTools: [web_search, conversation_search, fetch_webpage]
+
+    conversations:
+      mode: shared
+      heartbeat: last-active
+
+    channels:
+      discord:
+        enabled: true
+        token: ${DISCORD_TOKEN}
+        groups:
+          "${DISCORD_CHANNEL_1}": { mode: mention-only }
+          "${DISCORD_CHANNEL_2}": { mode: mention-only }
+
+providers:
+  - id: google
+    name: lc-google
+    type: google_ai_studio
+    apiKey: ${GOOGLE_API_KEY}
