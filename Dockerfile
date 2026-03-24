@@ -20,5 +20,6 @@ COPY --from=build /app/skills ./skills
 
 ENV NODE_ENV=production
 EXPOSE 8080
+HEALTHCHECK NONE
 
-CMD ["node", "dist/main.js"]
+CMD ["sh", "-c", "node generate-config.js && node dist/main.js"]
