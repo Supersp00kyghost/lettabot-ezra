@@ -1,6 +1,3 @@
-# Railway deployment configuration
-# https://docs.railway.app/reference/config-as-code
-
 [
 build
 ]
