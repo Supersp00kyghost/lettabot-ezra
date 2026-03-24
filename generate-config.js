@@ -1,4 +1,5 @@
 const fs = require('fs');
+const http = require('http');
 
 const config = `server:
   mode: api
@@ -32,3 +33,10 @@ providers:
 
 fs.writeFileSync('lettabot.yaml', config);
 console.log('Generated lettabot.yaml from environment variables');
+
+// Health check server
+http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('ok');
+}).listen(8080);
+console.log('Health check server running on port 8080');
