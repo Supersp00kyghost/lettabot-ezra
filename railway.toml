@@ -1,20 +1,16 @@
 # Railway deployment configuration
 # https://docs.railway.app/reference/config-as-code
 
-[build]
+[
+build
+]
 builder = "NIXPACKS"
 
-[build.nixpacks]
-nixPkgs = ["nodejs_22"]
-
-[deploy]
-# Build TypeScript before starting
-buildCommand = "npm run build"
-# Start the server
+[
+deploy
+]
 startCommand = "npm start"
-# Health check endpoint
 healthcheckPath = "/"
 healthcheckTimeout = 30
-# Restart policy
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
