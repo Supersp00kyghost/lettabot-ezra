@@ -1,17 +1,25 @@
 server:
   mode: api
+  apiKey: "placeholder"
 
-agent:
-  id: [agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81](/chat/agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81/agents/agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81)
-
-channels:
-  discord:
-    enabled: true
-    groups:
-      "1485743295396188382": { mode: mention-only }
-      "1485788448672448592": { mode: mention-only }
+agents:
+  - name: "My Ezra"
+    id: "[agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81](/projects/default-project/agents/agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81)"
+    features:
+      allowedTools: [web_search, conversation_search, fetch_webpage, bash, read, write, edit, glob, grep, task]
+    conversations:
+      mode: shared
+      heartbeat: last-active
+    channels:
+      discord:
+        enabled: true
+        token: "placeholder"
+        groups:
+          "1485788448672448592": { mode: mention-only }
+          "1485743295396188382": { mode: mention-only }
 
 providers:
   - id: google
     name: lc-google
     type: google_ai_studio
+    apiKey: "placeholder"
