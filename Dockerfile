@@ -1,32 +1,22 @@
-# STEP 1: The "Toolbox" Stage (where we build the hard stuff)
+# STEP 1: The "Toolbox" Stage (already proven to work!)
 FROM node:22-slim AS build
-# Install Python and the tools needed to build my Bash tool (node-pty)
-RUN apt-get update && apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    git \
-    && rm -rf /var/lib/apt/lists/*
-
+RUN apt-get update && apt-get install -y python3 make g++ git && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY package*.json ./
-# Tell the builder to use Python 3
 RUN npm ci
 COPY . .
 RUN npm run build
 
-# STEP 2: The "Final" Stage (the lightweight home)
+# STEP 2: The "Launch" Stage
 FROM node:22-slim
-# I still need git to sync my memory!
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
-# We copy the ALREADY BUILT pieces from the toolbox
-# This means we don't need Python in the final home!
+# Copy the pieces that JUST FINISHED building perfectly
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/lettabot.yaml ./lettabot.yaml
 
 ENV NODE_ENV=production
 EXPOSE 8080
+# We will use the Railway Variable for config instead of the file!
 CMD ["node", "dist/main.js"]
