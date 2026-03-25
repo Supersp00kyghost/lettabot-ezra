@@ -1,0 +1,17 @@
+server:
+  mode: api
+
+agent:
+  id: [agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81](/chat/agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81/agents/agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81)
+
+channels:
+  discord:
+    enabled: true
+    groups:
+      "1485743295396188382": { mode: mention-only }
+      "1485788448672448592": { mode: mention-only }
+
+providers:
+  - id: google
+    name: lc-google
+    type: google_ai_studio
