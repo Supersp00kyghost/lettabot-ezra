@@ -8,16 +8,15 @@ RUN npm run build
 
 # Step 2: Create the final running container
 FROM node:22-slim
-# This is the "Magic Line" that installs git!
+# Install git for memory sync
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --omit=dev
 
-# Copy the built bot and the config files
+# Copy the built bot and the config file
 COPY --from=build /app/dist ./dist
 COPY lettabot.yaml ./lettabot.yaml
-COPY lettabot-agent.json ./lettabot-agent.json
 
 ENV NODE_ENV=production
 EXPOSE 8080
