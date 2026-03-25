@@ -1,8 +1,8 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "deploy": {
-    "startCommand": "node generate-config.js && npm run dev",
-    "healthcheckPath": null,
+    "startCommand": "npm run dev",
+    "healthcheckPath": "/",
     "restartPolicyType": "ON_FAILURE"
   }
 }
