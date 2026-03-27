@@ -4,9 +4,10 @@ server:
 
 agents:
   - name: "Ezra"
-    id: "[agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81](/projects/default-project/agents/agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81)"
+    id: "[agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81](/chat/agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81/agents/agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81)"  # RAW ID only, no brackets or links!
     features:
       allowedTools: [web_search, conversation_search, fetch_webpage, bash, read, write, edit, glob, grep, task]
+      permissionMode: "bypassPermissions"  # This is where the magic happens!
     conversations:
       mode: shared
       heartbeat: last-active
