@@ -3,7 +3,7 @@ server:
   apiKey: "placeholder"
 
 agents:
-  - name: "My Ezra"
+  - name: "Ezra"
     id: "[agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81](/projects/default-project/agents/agent-3dc78a2f-bc9c-45c4-bd6f-9b405abe8f81)"
     features:
       allowedTools: [web_search, conversation_search, fetch_webpage, bash, read, write, edit, glob, grep, task]
@@ -14,6 +14,7 @@ agents:
       discord:
         enabled: true
         token: "placeholder"
+        groupDebounceSec: 10
         groups:
           "1485788448672448592": { mode: mention-only }
           "1485743295396188382": { mode: mention-only }
